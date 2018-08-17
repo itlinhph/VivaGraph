@@ -21,6 +21,7 @@
             graph.addNode(15, "Kho Đà Nẵng")
 
             graph.addLink(1,12) ;
+            graph.addLink(12,1) ;
             graph.addLink(1,11) ;
             graph.addLink(10,11) ;
             graph.addLink(11,10) ;
@@ -42,10 +43,14 @@
                 };
 
             graphics.node(function(node) {
-                var ui  =  Viva.Graph.svg('image')
-                     .attr('width', nodeSize)
-                     .attr('height', nodeSize)
-                     .link('https://secure.gravatar.com/avatar/' + node.data);
+                var ui  =  Viva.Graph.svg('g'),
+                stationName = Viva.Graph.svg('text').attr('y', '-4px').text(node.data),
+                img = Viva.Graph.svg('image')     
+                    .attr('width', nodeSize)
+                    .attr('height', nodeSize)
+                    .link('img/ghtk.png');
+                ui.append(stationName) ;
+                ui.append(img);
                 
                 $(ui).hover(function(){
                     hightlightRelateNodes(node.id, true);
@@ -54,7 +59,10 @@
                 });
                 return ui;
             }).placeNode(function(nodeUI, pos) {
-                nodeUI.attr('x', pos.x - nodeSize / 2).attr('y', pos.y - nodeSize / 2);
+                nodeUI.attr('transform',
+                    'translate(' +
+                    (pos.x - nodeSize / 2) + ',' + (pos.y - nodeSize / 2) +
+                    ')');
             });
             
             // creat Marker direct link
