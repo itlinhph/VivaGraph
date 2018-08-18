@@ -1,0 +1,440 @@
+"id","name","is_main"
+1,"Kho Cầu Giấy - Hà Nội",1
+2,"Kho Tân Bình - HCM",1
+3,"Kho Thanh Liệt - Hà Nội",0
+4,"Kho Bình Thạnh - HCM",0
+5,"Kho Hải Châu - Đà Nẵng",0
+6,"Kho Thủ Đức - HCM",0
+7,"Kho Hải Dương",1
+8,"Kho Hải Phòng",1
+10,"Kho Hạ Long",1
+11,"Kho Cẩm Phả",1
+12,"Kho Uông Bí",1
+13,"Kho Móng Cái",1
+14,"Kho Bắc Ninh",1
+15,"Kho Bắc giang",1
+16,"Kho Việt Trì",1
+17,"Kho Vĩnh Yên",1
+18,"Kho Thái Nguyên",1
+19,"Kho Hưng Yên",1
+20,"Kho Nam Định",1
+21,"Kho Thái Bình",1
+22,"Kho Ninh Bình",1
+23,"Kho Phủ Lý",1
+24,"Kho LV - Thủ Dầu Một",1
+25,"Kho Vũng Tàu",1
+26,"Kho LV - Biên Hòa",1
+27,"Kho Tân An",1
+28,"Kho Tân Hương",1
+29,"Kho Bến Tre",1
+30,"Kho Cao Lãnh",1
+31,"Kho Long Xuyên",1
+32,"Kho Bình Thủy",1
+33,"Kho Vĩnh Long",1
+34,"Kho Vị Thanh",1
+35,"Kho Trà Vinh",1
+36,"Kho Bạc Liêu",1
+37,"Kho Huỳnh Thúc Kháng (MN18)",1
+38,"Kho Rạch Giá",1
+39,"Kho Sóc Trăng",1
+40,"Kho Đồng Xoài",1
+41,"Kho Tây Ninh",1
+42,"Kho Pleiku",1
+43,"Kho KonTum",1
+44,"Kho Buôn Ma Thuột",0
+45,"Kho Đà Lạt",0
+46,"Kho Gia Nghĩa",1
+47,"Kho Hòa Bình",1
+48,"Kho Sơn La",1
+49,"Kho Lai Châu",1
+50,"Kho Lào Cai",1
+51,"Kho Điện Biên Phủ",1
+52,"Kho Lạng Sơn",1
+53,"Kho Cao Bằng",1
+54,"Kho Bắc Kạn",1
+55,"Kho Tuyên Quang",1
+56,"Kho Yên Bái",1
+57,"Kho Hà Giang",1
+58,"Kho Quy Nhơn",1
+59,"Kho Tuy Hòa",1
+60,"Kho Nha Trang",1
+61,"Kho Phan Rang",1
+62,"Kho Phan Thiết",1
+63,"Kho Đồng Hới",1
+64,"Kho Huế",1
+65,"Kho Đông Hà",1
+66,"Kho Quảng Ngãi",1
+67,"Kho Tam Kì",1
+68,"Kho Vinh",1
+69,"Kho Hà Tĩnh",1
+70,"Kho Thanh Hoá",1
+71,"Kho Châu Đốc",1
+72,"Kho Long Khánh",1
+73,"Kho Cam Ranh",0
+74,"Kho Bảo Lộc",0
+75,"Kho Mộc Châu",0
+76,"Kho Hương Thủy",0
+77,"Kho Giải Phóng 1 (HN)",0
+78,"Kho Đức Trọng",0
+79,"Kho ĐăkMil",0
+80,"Kho Buôn Hồ",0
+81,"Kho Eakar",0
+82,"Kho Ayunpa",0
+83,"Kho An Khê",0
+84,"Kho Ngọc Hồi",0
+85,"Kho Hoài Nhơn",0
+86,"Kho Hàm Thuận Nam",0
+87,"Kho Long Thành",0
+88,"Kho Bàu Bàng",0
+89,"Kho Tân Thành",0
+90,"Kho Gò Dầu",0
+91,"Kho Bình Long",0
+92,"Kho Phước Long",0
+93,"Kho Bến Lức",0
+94,"Kho Kiến Tường",0
+95,"Kho Cai Lậy",0
+96,"Kho Cái Nước",0
+97,"Kho Phố Nối",0
+98,"Kho Chí Linh",0
+99,"Kho Kiến An",0
+100,"Kho Tiên Yên (MB10.E)",0
+101,"Kho Na Hang",0
+102,"Kho Lục Ngạn",0
+103,"Kho Sông Công",0
+104,"Kho Từ Sơn",0
+105,"BC Trung Kính (HN)",0
+106,"Kho Hải Hậu",0
+107,"Kho Quỳnh Phụ",0
+108,"Kho Hà Trung",0
+109,"Kho Quỳnh Lưu",0
+110,"Kho Phú Quốc",0
+111,"Kho Ba Đồn",0
+112,"Kho Cẩm Thủy",0
+113,"Kho Quan Sơn",0
+114,"Kho Như Xuân",0
+115,"Kho Hồng Lĩnh",0
+116,"Kho Kỳ Anh",0
+117,"Kho Tương Dương",0
+118,"Kho Quỳ Hợp",0
+119,"Kho Đô Lương",0
+120,"Kho Điện Bàn",0
+121,"Kho Tân Lạc",0
+122,"Kho Cẩm Khê",0
+123,"Kho Thanh Sơn",0
+124,"Kho Nghĩa Lộ",0
+125,"Kho Sapa",0
+126,"Kho Bình Gia",0
+127,"Kho Bảo Yên",0
+128,"Kho Mường Chà",0
+129,"Kho Lập Thạch",0
+132,"Kho Thốt Nốt",0
+136,"Kho Sa Đéc",0
+140,"Kho Mỏ Cày Nam",0
+144,"Kho Kiên Lương",0
+148,"Kho Đức Linh",0
+152,"Kho Sông Cầu",0
+156,"Kho Ninh Hòa",0
+158,"Kho Chương Mỹ (HN)",0
+161,"Kho Ứng Hòa (HN)",0
+164,"Kho Thường Tín (HN)",0
+167,"Kho Ba Vì (HN)",0
+170,"Kho Đông Anh (HN)",0
+173,"Kho Sóc Sơn (HN)",0
+176,"Kho Tân Phú",0
+179,"Kho Bà Rịa",0
+182,"Kho Đức Hòa",0
+185,"Kho Gò Công",0
+188,"Kho Hồng Ngự",0
+191,"Kho Bù Đăng",0
+194,"Kho Năm Căn",0
+195,"Kho Tuy Phong",0
+198,"Kho Cư Jut",0
+201,"Kho Ngô Mây",0
+202,"Kho Côn Đảo",0
+204,"Kho Tĩnh Gia",0
+205,"Kho Phúc Thọ (HN)",0
+208,"BC Gò Vấp Cây Trâm (HCM)",0
+211,"BC Tân Sơn Nhì (HCM)",0
+214,"BC Tên Lửa (HCM)",0
+217,"BC Lạc Long Quân (HCM)",0
+220,"BC Nguyễn Phúc Nguyên (HCM)",0
+222,"BC Tôn Thất Thuyết (HN)",0
+223,"BC Tô Ngọc Vân (HN)",0
+226,"Kho Trà Vinh 2",0
+229,"Kho LV - Long Xuyên",0
+232,"Kho Châu Thành",0
+235,"Kho Cái Tắc",0
+238,"Kho Hoa Lư",0
+241,"Kho LV - Buôn Ma Thuột",1
+244,"Kho Trần Quý Cáp (MT19)",0
+247,"Kho LV - Đức Trọng",1
+250,"Kho Tây Sơn",1
+253,"Kho Mỹ Tho",0
+256,"Kho Sông Hinh",0
+259,"Kho Mỹ Ca",0
+262,"Kho LV - Cam Ranh",1
+265,"Kho Ninh Sơn",0
+268,"Kho La Gi",0
+271,"Kho Trà Ôn",0
+274,"Kho LV - Cần Thơ",0
+277,"Kho Cái Răng",0
+280,"Kho Thạnh Trị",0
+283,"Kho Giá Rai",0
+286,"Kho Biên Hòa 2",0
+289,"Kho Trảng Bom",0
+292,"Kho Nhơn Trạch",0
+295,"Kho Bến Tre 2",0
+298,"Kho Vũng Tàu 2",0
+301,"Kho Tân Châu",0
+304,"Kho Dương Minh Châu",0
+307,"Kho Nam Tân Uyên",0
+310,"Kho Thuận An",0
+313,"Kho Duyên Hải",0
+316,"Kho Diên Khánh",0
+319,"Kho Chư Prông",0
+325,"Kho Chư Sê",0
+328,"Kho Lâm Hà",0
+331,"Kho Di Linh",0
+334,"Kho Đạ Tẻh",0
+337,"Kho Lăk",0
+340,"Kho Lương Sơn",0
+343,"Kho Sông Mã",0
+346,"Kho Tuần Giáo",0
+349,"Kho Quế Sơn ",0
+352,"BC Lê Hồng Phong (HCM)",0
+355,"BC Miếu Nổi (HCM)",0
+358,"BC Quan Hoa (HN)",0
+361,"BC Thụy Khuê (HN)",0
+364,"BC Nơ Trang Long (HCM)",0
+367,"Kho Mai Sơn",0
+370,"Kho Hướng Hóa",0
+373,"Kho Phong Điền",0
+376,"Kho Phú Lộc",0
+381,"Kho BẮC QUANG (HG)",0
+389,"Kho Hiệp Hòa",0
+393,"Kho Cửa Ông",0
+396,"Kho Bắc Hà",0
+401,"Kho Văn Bàn",0
+406,"Kho Thọ Xuân",0
+411,"Kho Bá Thước",0
+416,"Kho Lang Chánh",0
+421,"Kho Mường Lát",0
+426,"Kho Quan Hóa (MT1)",0
+431,"Kho Bản Phủ",0
+436,"Kho Thuận Châu",0
+441,"BC Văn Miếu (HN)",0
+446,"Kho Phù Yên",0
+451,"Kho Sìn Hồ",0
+456,"Kho Phong Thổ",0
+461,"Kho Văn Yên",0
+471,"Kho Thuận Thành",0
+476,"Kho Ninh Giang",0
+486,"Kho Hàm Yên",0
+491,"Kho Chiêm Hóa",0
+501,"Kho Mường Tè",0
+502,"Kho Ngô Quyền (MN18)",0
+505,"Nội Bài - Tân Sơn Nhất",0
+509,"Kho Mường Khương",0
+513,"Sân Bay Nội Bài",0
+517,"Sân Bay Đà Nẵng",0
+521,"Sân Bay Cần Thơ",0
+525,"Sân bay Cát Bi",0
+529,"Sân bay Cam Ranh",0
+533,"Sân bay Liên Khương",0
+537,"Kho Gia Bình",0
+541,"Kho Quế Võ",0
+545,"Kho Tiên Du",0
+549,"Kho Ý Yên",0
+553,"Kho Liên Chiểu - Đà Nẵng",0
+557,"Kho Ba Bể",0
+561,"Kho Khoái Châu",0
+565,"Kho Đại Từ",0
+569,"Kho Định Hóa",0
+581,"Kho Phù Ninh",0
+585,"Kho Tx Phú Thọ",0
+589,"Kho Đoan Hùng",0
+593,"Kho Phúc Yên",0
+597,"Kho Hữu Lũng",0
+601,"Kho Văn Lãng",0
+605,"Kho Than Uyên",0
+609,"Kho Điện Biên Đông",0
+613,"Kho Vĩnh Tường",0
+617,"Kho Hàm Nghi (HN)",0
+621,"BC Lê Trọng Tấn (HN)",0
+625,"BC Vũ Tông Phan (HN)",0
+629,"BC 1119 Giải Phóng (HN)",0
+633,"BC Trần Quang Diệu (HN)",0
+637,"Kho Trực Ninh",0
+641,"Kho Thái Thụy",0
+645,"Kho Tiền Hải",0
+649,"Kho Nậm Pồ",0
+653,"Kho Mường Nhé",0
+657,"Kho Phù Lỗ (HN)",0
+661,"BC 697 Giải Phóng (HN)",0
+665,"Kho Thủy Nguyên",0
+669,"Kho Yên Phong",0
+673,"BC Quang Trung (HN)",0
+677,"Kho Đại Lộc",0
+681,"Kho Bình Sơn",0
+685,"Kho Tiên Lãng",0
+689,"Kho Vĩnh Bảo",0
+693,"Kho Đông Triều",0
+697,"Kho Hải Hà",0
+701,"Kho Ân Thi",0
+705,"Kho Phạm Văn Đồng - HN",0
+709,"Kho An Dương",0
+713,"Kho Giải Phóng 2 (HN)",0
+717,"Kho Lệ Thủy",0
+721,"Kho Quảng Trị",0
+725,"Kim Thành",0
+729,"Kho Tam Điệp",0
+733,"BC Lê Văn Quới (HCM) ",0
+737,"Kho Hương Sơn",0
+741,"Kho Ninh Phước",0
+745,"Kho Quảng Uyên (CB)",0
+749,"Kho Bảo Lạc",0
+753,"Kho Lục Nam",0
+757,"Kho Hàm Thuận Bắc",0
+761,"Kho Đông Hòa",0
+765,"Kho Vạn Ninh",0
+769,"Kho Cư Mgar",0
+773,"Kho Ea Hleo",0
+777,"Kho Chơn Thành",0
+781,"Kho Đăk Rlấp",0
+789,"Kho Đơn Dương",0
+793,"Kho Bến Cát",0
+797,"Kho Châu Đức",0
+801,"Kho Xuân Lộc",0
+809,"Kho Cần Đước",0
+813,"Kho Ba Tri",0
+817,"Kho Bình Đại",0
+821,"Kho Bình Đại",0
+825,"Kho Châu Thành - Tiền Giang",0
+829,"Kho Ô Môn",0
+837,"Kho Vũng Liêm",0
+841,"Kho Long Phú",0
+845,"Kho Vĩnh Châu ",0
+849,"Kho Đầm Dơi",0
+853,"Kho Tiểu Cần",0
+857,"Sân bay Tân Sơn Nhất",0
+861,"Sân bay Buôn Ma Thuột",0
+865,"BC Quan Nhân (HN)",0
+869,"BC Khâm Thiên (HN)",0
+873,"BC Đại Mỗ (HN)",0
+877,"BC Phạm Văn Đồng (HN)",0
+881,"Bưu cục TP Bắc Ninh",0
+885,"BC Nguyễn Công Trứ (HCM)",0
+889,"BC Huỳnh Tấn Phát (HCM)",0
+893,"Kho Gio Linh",0
+897,"Kho Tuyên Hóa",0
+901,"Kho Anh Sơn",0
+905,"Kho Nam Đàn",0
+909,"Kho Diễn Châu",0
+913,"Kho Hoằng Hóa",0
+917,"Kho Sầm Sơn",0
+921,"Kho Nông Cống",0
+925,"Kho Triệu Sơn",0
+929,"Bưu cục TP Thái Nguyên",0
+933,"BC Thanh Hóa",0
+937,"BC Vinh",0
+941,"BC TP Bắc Ninh",0
+945,"BC Từ Sơn",0
+949,"BC Tiên Du",0
+953,"BC Bắc Giang",0
+957,"BC TP Thái Nguyên",0
+961,"BC TP Sông Công",0
+965,"Kho Hội An",0
+969,"BC Vĩnh Yên",0
+973,"Bưu cục TP Việt Trì",0
+977,"BC Hà Giang",0
+981,"BC Bắc Kạn",0
+985,"Kho Núi Thành",0
+989,"BC Cao Bằng",0
+993,"BC Tuyên Quang",0
+997,"BC Lạng Sơn",0
+1001,"BC Phúc Yên",0
+1005,"BC Thuận Thành",0
+1009,"Kho Tam Dương",0
+1013,"Kho Sơn Dương",0
+1017,"Kho Mèo Vạc",0
+1021,"Kho Hoàng Su Phì",0
+1025,"Kho Đồng Văn",0
+1029,"Kho Quản Bạ",0
+1033,"Kho Yên Minh",0
+1037,"Kho Bắc Mê",0
+1041,"Kho Chợ Đồn",0
+1045,"Kho Na Rì",0
+1049,"Kho Chợ Mới",0
+1053,"Kho Đà Bắc",0
+1057,"Kho Kim Bôi",0
+1061,"Kho Lạc Thủy",0
+1065,"Kho Bố Trạch",0
+1069,"Kho Mộ Đức",0
+1073,"BC Nguyễn Thị Thập (HCM)",0
+1077,"Kho Bình Giang",0
+1081,"BC Liên Chiểu (ĐN)",0
+1085,"BC Hải Châu (ĐN)",0
+1089,"BC Lý Nhân Tông (ĐN)",0
+1093,"Kho Kim Sơn",0
+1097,"Kho Nho Quan",0
+1101,"Kho Đông Hưng",0
+1105,"Kho Lý Nhân",0
+1109,"Kho Duy Tiên",0
+1113,"BC Phan Trọng Tuệ",0
+1117,"Kho Hà Khẩu",0
+1121,"Kho Củ Chi (HCM)",0
+1125,"Kho Mường La",0
+1129,"Kho Sốp Cộp",0
+1133,"Kho Quỳnh Nhai",0
+1137,"Kho Cầu Giấy (Tối)",0
+1141,"BC Bình Thới (HCM)",0
+1145,"BC Lũy Bán Bích (HCM)",0
+1149,"BC Hải Dương",0
+1153,"Kho Giao Thủy",0
+1157,"Kho Nghĩa Hưng",0
+1161,"Kho Nguyên Bình",0
+1165,"Kho Bảo Lâm",0
+1169,"Kho Giải Phóng (tối)",0
+1173,"Kho Hạ Lang - CAO BẰNG",0
+1177,"Kho Quang Bình",0
+1181,"Kho An Thới",0
+1182,"Kho Văn Quan - Lạng Sơn",0
+1186,"Kho Chi Lăng - (LS)",0
+1190,"Kho Tủa Chùa",0
+1194,"Kho Mường Ảng",0
+1198,"BC Bàu Cát (HCM)",0
+1202,"BC Lê Bình (HCM)",0
+1206,"Kho Long Biên (HN)",0
+1210,"Kho Việt Yên",0
+1211,"Kho Quảng Yên",0
+1214,"BC Nguyễn Sơn (HN)",0
+1216,"BC Phan Văn Trị (HCM)",0
+1220,"Kho Phổ Yên",0
+1224,"Kho Võ Nhai",0
+1228,"Kho LỤC YÊN",0
+1232,"Kho Lục Yên",0
+1236,"BC Phú Diễn (HN)",0
+1240,"BC Hòa Bình",0
+1244,"BC Hạ Long",0
+1248,"Kho Yên Lạc",0
+1252,"Kho Yên Dũng",0
+1256,"Kho LV - Hải Phòng",0
+1260,"Kho LV - Thanh Hóa",0
+1264,"Kho LV - Vinh",0
+1265,"Sân bay Điện Biên Phủ",0
+1266,"Sân bay Thọ Xuân",0
+1267,"Sân bay Vinh",0
+1268,"Kho LV - Đà Nẵng",1
+1269,"Kho Tân Yên (MB9.G)",0
+1270,"Sân bay Phù Cát",0
+1271,"Sân bay Tuy Hòa",0
+1272,"Sân bay Pleiku",0
+1273,"Kho Yên Thế",0
+1274,"Sân bay Côn Đảo",0
+1275,"Sân bay Rạch Giá",0
+1276,"Sân bay Phú Quốc",0
+1277,"Kho LV - Thuận An",0
+1368,"Sân bay Phú Bài",0
+1369,"Sân bay Chu Lai",0
+1373,"Sân bay Cà Mau",0
+1377,"Kho Yên Bình",0

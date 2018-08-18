@@ -7,37 +7,38 @@
     <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
     <script type="text/javascript">
         function main() {
+            // Load Data
+            var egdeList;
+            var nodeList;
+            // console.log(egdeList);
+            // console.log(nodeList);
             // creat graph
             var graph = Viva.Graph.graph();
-            
-            // 2. Add graph node and edge
-            var firstNode = graph.addNode(1, 'Kho tổng');
-            firstNode.isPinned = true;
-            graph.addNode(10, "Kho Hàm Nghi")
-            graph.addNode(11, "Kho Nam Đàn")
-            graph.addNode(12, "Kho Nghệ An")
-            graph.addNode(13, "Kho Lê TT")
-            graph.addNode(14, "Kho Vinh")
-            graph.addNode(15, "Kho Đà Nẵng")
+            nodeList.forEach(function(item) {
+                if(item[2] == "1")
+                    graph.addNode(item[0], item[1]).isPinned = true ;
+                else
+                    graph.addNode(item[0], item[1]) ;
+                
+            });
 
-            graph.addLink(1,12) ;
-            graph.addLink(12,1) ;
-            graph.addLink(1,11) ;
-            graph.addLink(10,11) ;
-            graph.addLink(11,10) ;
-            graph.addLink(11,12) ;
-            graph.addLink(12,14) ;
-            graph.addLink(11,13) ;
-            graph.addLink(11,15) ;
+            egdeList.forEach(function(item){
+                graph.addLink(item[0], item[1], item[2]) ;
+            });
+
             
             // customize node
             var graphics = Viva.Graph.View.svgGraphics(),
                 nodeSize = 24,
                 hightlightRelateNodes = function(nodeId, isOn) {
                     graph.forEachLinkedNode(nodeId, function(node, link) {
+                        var isFly = (link.data == "fly");
+                        var baseColor = "blue" ;
+                        if(isFly)
+                            baseColor = "red";
                         var linkUI = graphics.getLinkUI(link.id) ;
                         if(linkUI) {
-                            linkUI.attr("stroke", isOn ? "red" : "gray");
+                            linkUI.attr("stroke", isOn ? "yellow" : baseColor);
                         }
                     });
                 };
@@ -86,12 +87,17 @@
             defs.append(marker);
 
             var geom = Viva.Graph.geom();
-
+            
+            // Custom link
             graphics.link(function(link){
-                
-                return Viva.Graph.svg('path')
-                           .attr('stroke', 'gray')
+                var isFly = (link.data == 'fly'),
+                    
+                uil = Viva.Graph.svg('path')
+                           .attr('stroke', isFly ? 'red' : 'blue')
+                           .attr('fill', 'none')
                            .attr('marker-end', 'url(#Triangle)');
+                uil.isFly = isFly ;
+                return uil;
             }).placeLink(function(linkUI, fromPos, toPos) {
                 var toNodeSize = nodeSize,
                     fromNodeSize = nodeSize;
@@ -114,8 +120,10 @@
                         // segment:
                                 toPos.x, toPos.y, fromPos.x, fromPos.y) || toPos; 
                 
-                var data = 'M' + from.x + ',' + from.y +
-                           'L' + to.x + ',' + to.y;
+                var ry = linkUI.isFly ? 5 : 0,
+                data = 'M' + from.x + ',' + from.y +
+                        //    'L' + to.x + ',' + to.y;
+                           ' A 5,' + ry + ',-10,0,1,' + to.x + ',' + to.y;
                 linkUI.attr('d', data);
             });
 
