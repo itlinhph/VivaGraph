@@ -1,10 +1,7 @@
 
      
+    
     // Load Data
-    var nodeList = []; 
-    
-    
-    var egdeList = []; // private information
 
     // console.log(egdeList);
     // console.log(nodeList);
@@ -24,6 +21,15 @@
     });
 
     
+
+    // layout
+    var layout = Viva.Graph.Layout.forceDirected(graph, {
+        springLength : 120,
+        springCoeff : 0.0008,
+        dragCoeff : 0.06,
+        gravity : -0.2
+     });
+
     // customize node
     var graphics = Viva.Graph.View.svgGraphics(),
         nodeSize = 20,
@@ -49,6 +55,10 @@
             .link('resource/img/ghtk.png');
         ui.append(stationName) ;
         ui.append(img);
+        ui.addEventListener('click', function () {
+            // toggle pinned mode
+            layout.pinNode(node, !layout.isNodePinned(node));
+        });
         
         $(ui).hover(function(){
             hightlightRelateNodes(node.id, true);
@@ -126,9 +136,48 @@
 
     // Render the graph
     var renderer = Viva.Graph.View.renderer(graph, {
-        graphics : graphics
+        layout    : layout,
+        graphics  : graphics,
+        container : document.getElementById('graphContainer')
     }) ;
             
     function renderGraph() {
         renderer.run();
+    }
+
+    function pauseRender() {
+        $("#btnPause").addClass("hide");
+        $("#btnResume").removeClass("hide");
+        renderer.pause();
+    }
+    
+    function resumeRender() {
+        $("#btnPause").removeClass("hide");
+        $("#btnResume").addClass("hide");
+        renderer.resume();
+    }
+
+    function hightlightRoute() {
+        var arrayId = ["229", "1121", "1260", "657" ];
+        
+        var edgeHightlight = [];
+        for(i=0; i< arrayId.length -1; i++) {
+            edgeHightlight.push([arrayId[i], arrayId[i+1]]);
+        }
+        console.log(edgeHightlight);
+
+        for(i=0; i< edgeHightlight.length; i++) {
+            hightlightLink(edgeHightlight[i]) ;
+        }
+    }
+
+    function hightlightLink(edge) {
+        var link_edge = graph.getLink(edge[0], edge[1]);
+        console.log(link_edge);
+        var linkUI = graphics.getLinkUI(link_edge.id) ;
+        console.log(linkUI);
+        // if(linkUI) {
+            linkUI.attr("stroke", "red");
+        // }
+
     }

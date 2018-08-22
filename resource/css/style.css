@@ -21,3 +21,12 @@ html,body,svg {
     position: absolute;
     z-index: 2;
 }
+
+.controlpanel {
+    margin-left: 400px;
+    margin-top: 20px ;
+}
+.btn-control {
+    
+    width: 80px;
+}

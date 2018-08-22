@@ -21,7 +21,7 @@
 <body onload= 'renderGraph()'>
 <div ></div>
 <div class="container-fluid row">
-    <div class="col-md-9">
+    <div class="col-md-9" id="graphContainer">
         
         <form action="" method="POST" class="form-inline" id="form-submit" role="form">
         
@@ -36,6 +36,11 @@
         
             <button type="submit" class="btn btn-primary">Find</button>
         </form>
+        <div class="controlpanel">
+            <button class="btn btn-danger btn-control" id="btnPause" onclick="pauseRender()">Pause</button>
+            <button class="btn btn-primary hide btn-control" id="btnResume" onclick="resumeRender()">Resume</button>
+            <button class="btn btn-primary btn-control" id="btnRoute" onclick="hightlightRoute()">Route</button>
+        </div>
         
     </div>
     <div class="col-md-3">
@@ -47,5 +52,7 @@
 </div>
 
 </body>
-
+<script>
+    
+</script>
 </html>
