@@ -3,144 +3,48 @@
 
 <head>
     <title>Test viva</title>
-    <script type="text/javascript" src="../../dist/vivagraph.js"></script>
-    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
-    <script type="text/javascript">
-        function main() {
-            // Load Data
-            var egdeList;
-            var nodeList;
-            // console.log(egdeList);
-            // console.log(nodeList);
-            // creat graph
-            var graph = Viva.Graph.graph();
-            nodeList.forEach(function(item) {
-                if(item[2] == "1")
-                    graph.addNode(item[0], item[1]).isPinned = true ;
-                else
-                    graph.addNode(item[0], item[1]) ;
-                
-            });
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 
-            egdeList.forEach(function(item){
-                graph.addLink(item[0], item[1], item[2]) ;
-            });
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="resource/css/style.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="resource/script/vivajs/vivagraph.js"></script>
+    <script type="text/javascript" src="resource/script/script.js"></script>
+    
+    <!-- <style type="text/css" media="screen">
+        
 
-            
-            // customize node
-            var graphics = Viva.Graph.View.svgGraphics(),
-                nodeSize = 24,
-                hightlightRelateNodes = function(nodeId, isOn) {
-                    graph.forEachLinkedNode(nodeId, function(node, link) {
-                        var isFly = (link.data == "fly");
-                        var baseColor = "blue" ;
-                        if(isFly)
-                            baseColor = "red";
-                        var linkUI = graphics.getLinkUI(link.id) ;
-                        if(linkUI) {
-                            linkUI.attr("stroke", isOn ? "yellow" : baseColor);
-                        }
-                    });
-                };
-
-            graphics.node(function(node) {
-                var ui  =  Viva.Graph.svg('g'),
-                stationName = Viva.Graph.svg('text').attr('y', '-4px').text(node.data),
-                img = Viva.Graph.svg('image')     
-                    .attr('width', nodeSize)
-                    .attr('height', nodeSize)
-                    .link('img/ghtk.png');
-                ui.append(stationName) ;
-                ui.append(img);
-                
-                $(ui).hover(function(){
-                    hightlightRelateNodes(node.id, true);
-                }, function() {
-                    hightlightRelateNodes(node.id, false) ;
-                });
-                return ui;
-            }).placeNode(function(nodeUI, pos) {
-                nodeUI.attr('transform',
-                    'translate(' +
-                    (pos.x - nodeSize / 2) + ',' + (pos.y - nodeSize / 2) +
-                    ')');
-            });
-            
-            // creat Marker direct link
-            var createMarker = function(id) {
-                    return Viva.Graph.svg('marker')
-                               .attr('id', id)
-                               .attr('viewBox', "0 0 10 10")
-                               .attr('refX', "10")
-                               .attr('refY', "5")
-                               .attr('markerUnits', "strokeWidth")
-                               .attr('markerWidth', "10")
-                               .attr('markerHeight', "5")
-                               .attr('orient', "auto");
-                },
-
-                marker = createMarker('Triangle');
-
-            marker.append('path').attr('d', 'M 0 0 L 10 5 L 0 10 z');
-
-            var defs = graphics.getSvgRoot().append('defs');
-            defs.append(marker);
-
-            var geom = Viva.Graph.geom();
-            
-            // Custom link
-            graphics.link(function(link){
-                var isFly = (link.data == 'fly'),
-                    
-                uil = Viva.Graph.svg('path')
-                           .attr('stroke', isFly ? 'red' : 'blue')
-                           .attr('fill', 'none')
-                           .attr('marker-end', 'url(#Triangle)');
-                uil.isFly = isFly ;
-                return uil;
-            }).placeLink(function(linkUI, fromPos, toPos) {
-                var toNodeSize = nodeSize,
-                    fromNodeSize = nodeSize;
-
-                var from = geom.intersectRect(
-                        // rectangle:
-                                fromPos.x - fromNodeSize / 2, // left
-                                fromPos.y - fromNodeSize / 2, // top
-                                fromPos.x + fromNodeSize / 2, // right
-                                fromPos.y + fromNodeSize / 2, // bottom
-                        // segment:
-                                fromPos.x, fromPos.y, toPos.x, toPos.y) || fromPos;
-
-                var to = geom.intersectRect(
-                        // rectangle:
-                                toPos.x - toNodeSize / 2, // left
-                                toPos.y - toNodeSize / 2, // top
-                                toPos.x + toNodeSize / 2, // right
-                                toPos.y + toNodeSize / 2, // bottom
-                        // segment:
-                                toPos.x, toPos.y, fromPos.x, fromPos.y) || toPos; 
-                
-                var ry = linkUI.isFly ? 5 : 0,
-                data = 'M' + from.x + ',' + from.y +
-                        //    'L' + to.x + ',' + to.y;
-                           ' A 5,' + ry + ',-10,0,1,' + to.x + ',' + to.y;
-                linkUI.attr('d', data);
-            });
-
-            // Render the graph
-            var renderer = Viva.Graph.View.renderer(graph, {
-                graphics : graphics
-            }) ;
-            renderer.run();
-        }
-    </script>
-
-    <style type="text/css" media="screen">
-        html,body,svg { width: 100%; height: 100%; }
-    </style>
+    </style> -->
 </head>
-
-<body onload='main()'>
+<body onload= 'renderGraph()'>
+<div ></div>
+<div class="container-fluid row">
+    <div class="col-md-9">
+        
+        <form action="" method="POST" class="form-inline" id="form-submit" role="form">
+        
+            <div class="form-group">
+                <label class="" for="">From</label>
+                <input type="number" class="form-control" id="fromStation" placeholder="">
+            </div>
+            <div class="form-group">
+                <label class="" for="">To</label>
+                <input type="number" class="form-control " id="toStation" placeholder="">
+            </div>
+        
+            <button type="submit" class="btn btn-primary">Find</button>
+        </form>
+        
+    </div>
+    <div class="col-md-3">
+        <iframe id="frame" src="https://www.google.com/maps/d/embed?mid=1AHdAYRLrbWvFJqrpR4qaSTQQ-bog663p" width="600" height="900"></iframe>
+        <div>See more at <a href="https://drive.google.com/open?id=1AHdAYRLrbWvFJqrpR4qaSTQQ-bog663p" target="_blank">Station full map</a></div>
+    </div>
+    
+    
+</div>
 
 </body>
 

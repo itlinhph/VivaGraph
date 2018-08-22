@@ -1,0 +1,23 @@
+html,body,svg {
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    overflow: hidden;
+    margin: 0px; 
+}
+#frame {
+    margin-top: 20px;
+    position: absolute;
+    z-index: 1;
+}
+
+#fromStation, #toStation {
+    width: 100px;
+    /* height: 30px; */
+}
+
+#form-submit {
+    margin-top: 20px;
+    position: absolute;
+    z-index: 2;
+}
