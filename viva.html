@@ -27,11 +27,11 @@
         
             <div class="form-group">
                 <label class="" for="">From</label>
-                <input type="number" class="form-control" id="fromStation" placeholder="">
+                <input type="number" class="form-control" id="fromStation" required="required">
             </div>
             <div class="form-group">
                 <label class="" for="">To</label>
-                <input type="number" class="form-control " id="toStation" placeholder="">
+                <input type="number" class="form-control " id="toStation" required="required" >
             </div>
         
             <button type="submit" class="btn btn-primary">Find</button>
@@ -39,8 +39,9 @@
         <div class="controlpanel">
             <button class="btn btn-danger btn-control" id="btnPause" onclick="pauseRender()">Pause</button>
             <button class="btn btn-primary hide btn-control" id="btnResume" onclick="resumeRender()">Resume</button>
-            <button class="btn btn-primary btn-control" id="btnRoute" onclick="hightlightRoute()">Route</button>
+            <button class="btn btn-primary btn-control" id="btnReset" onclick="resetColor()">Reset</button>
         </div>
+        <div class="msgOut"></div>
         
     </div>
     <div class="col-md-3">
@@ -53,6 +54,12 @@
 
 </body>
 <script>
+    $("#form-submit").submit(function (e) {
+
+    e.preventDefault();
+    getRoute();
     
+
+});
 </script>
 </html>

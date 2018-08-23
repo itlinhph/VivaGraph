@@ -1,23 +1,40 @@
 
      
-    
-    // Load Data
+    var URL_API = "http://192.168.100.115:3001" ;
 
-    // console.log(egdeList);
-    // console.log(nodeList);
+    function getDataFromAPI(url1) {
+        var dataOut ;
+        console.log(url1);
+        $.ajax({
+            method: "GET",
+            url: url1,
+            async: false,
+            success: function (data) { 
+                dataOut = data; 
+            },
+            
+        });
+        return dataOut;
+    };
+    
+    var nodeList = getDataFromAPI(URL_API + "/address/getVertexList");
+    var edgeList = getDataFromAPI(URL_API + "/address/getEdgeList");
+    console.log(nodeList);
+    console.log(edgeList);
+
     // creat graph
     var graph = Viva.Graph.graph();
     nodeList.forEach(function(item) {
-        if(item[2] == "kho_tong")
+        if(item.trf_level == "kho_tong")
             // graph.addNode(item[0], item[1]).isPinned = true ;
-            graph.addNode(item[0], {name: item[1], type: item[2], vido: item[3], kinhdo: item[4]});
+            graph.addNode(item.id, item);
         // else
         //     graph.addNode(item[0], item[1]) ;
         
     });
-
-    egdeList.forEach(function(item){
-        graph.addLink(item[0], item[1], item[2]) ;
+    
+    edgeList.forEach(function(item){
+        graph.addLink(item.fr_stid, item.to_stid, item.trf_type) ;
     });
 
     
@@ -36,12 +53,14 @@
         hightlightRelateNodes = function(nodeId, isOn) {
             graph.forEachLinkedNode(nodeId, function(node, link) {
                 var isFly = (link.data == "fly");
-                var baseColor = "blue" ;
-                if(isFly)
-                    baseColor = "red";
                 var linkUI = graphics.getLinkUI(link.id) ;
+                
                 if(linkUI) {
-                    linkUI.attr("stroke", isOn ? "yellow" : baseColor);
+                    if(!linkUI.baseColor)
+                        linkUI.baseColor = "blue" ;
+                    if(isFly)
+                        linkUI.baseColor = "red";
+                linkUI.attr("stroke", isOn ? "yellow" : linkUI.baseColor);
                 }
             });
         };
@@ -143,41 +162,90 @@
             
     function renderGraph() {
         renderer.run();
-    }
+    };
 
     function pauseRender() {
         $("#btnPause").addClass("hide");
         $("#btnResume").removeClass("hide");
         renderer.pause();
-    }
+    };
     
     function resumeRender() {
         $("#btnPause").removeClass("hide");
         $("#btnResume").addClass("hide");
         renderer.resume();
-    }
+    };
 
-    function hightlightRoute() {
-        var arrayId = ["229", "1121", "1260", "657" ];
+    function hightlightRoute(arrayId) {
+        // var arrayId = [1121, 1260, 657, 705 ];
         
+
         var edgeHightlight = [];
         for(i=0; i< arrayId.length -1; i++) {
+            highlightNode(arrayId[i]);
             edgeHightlight.push([arrayId[i], arrayId[i+1]]);
+            edgeHightlight.push([arrayId[i+1], arrayId[i]]);
         }
         console.log(edgeHightlight);
 
         for(i=0; i< edgeHightlight.length; i++) {
             hightlightLink(edgeHightlight[i]) ;
         }
-    }
+    };
 
     function hightlightLink(edge) {
         var link_edge = graph.getLink(edge[0], edge[1]);
-        console.log(link_edge);
         var linkUI = graphics.getLinkUI(link_edge.id) ;
-        console.log(linkUI);
-        // if(linkUI) {
+        if(linkUI) {
             linkUI.attr("stroke", "red");
-        // }
+            linkUI.baseColor = "red";
+        }
 
-    }
+    };
+
+    function highlightNode(nodeId) {
+        var ui = graphics.getNodeUI(nodeId);
+        ui.attr('fill', 'red');
+    };
+
+    function getRoute() {
+        var route = [];
+        var src = $("#fromStation").val();
+        var dst = $("#toStation").val();
+        dataSend = {src: src, dst: dst} ;
+        // console.log(dataSend);
+        $.ajax({
+            method: "POST",
+            url: "http://192.168.100.115:3001/address/getRoute",
+            async: false,
+            data: dataSend,
+            success: function (data) { 
+                route = data; 
+            },
+            
+        });
+        console.log("route:", route)
+        if(route.length == 0) {
+            $(".msgOut").html("Chưa config tuyến đường này!");
+        }
+        else {
+            var msg = "Tuyến config:" + route.join(" --> ");
+            
+            $(".msgOut").html("Chưa config tuyến đường này!");
+            hightlightRoute(route);
+
+        }
+    };
+
+    function resetColor() {
+        graphics.node(function(node) {
+            var ui = graphics.getNodeUI(node.id);
+            ui.attr('fill', 'black');
+        });
+        graphics.link(function(link){
+            var linkUI = graphics.getLinkUI(link.id) ;
+            linkUI.attr("stroke", "blue");
+            linkUI.baseColor = "blue";
+        }); 
+
+    };

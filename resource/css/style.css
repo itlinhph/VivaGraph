@@ -30,3 +30,9 @@ html,body,svg {
     
     width: 80px;
 }
+
+.msgOut {
+    margin-top: 10px;
+    margin-left: 40px;
+    color: red;
+}
