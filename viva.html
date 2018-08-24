@@ -27,20 +27,32 @@
         
             <div class="form-group">
                 <label class="" for="">From</label>
-                <input type="number" class="form-control" id="fromStation" required="required">
+                <input type="text" class="form-control" id="fromStation" placeholder="Ex: 505" required="required" pattern="^[0-9]+$" title="Number pờ lít!">
             </div>
             <div class="form-group">
                 <label class="" for="">To</label>
-                <input type="number" class="form-control " id="toStation" required="required" >
+                <input type="text" class="form-control " id="toStation" placeholder="Ex: 705" required="required" pattern="^[0-9]+$" title="Number pờ lít!" >
             </div>
         
-            <button type="submit" class="btn btn-primary">Find</button>
+            <button type="submit" class="btn btn-success"><span class="glyphicon glyphicon-search" aria-hidden="true"></span> Find</button>
         </form>
         <div class="controlpanel">
-            <button class="btn btn-danger btn-control" id="btnPause" onclick="pauseRender()">Pause</button>
+            <span><B>Render Graph</B></span>
+            <button class="btn btn-warning btn-control" id="btnPause" onclick="pauseRender()">Pause</button>
             <button class="btn btn-primary hide btn-control" id="btnResume" onclick="resumeRender()">Resume</button>
-            <button class="btn btn-primary btn-control" id="btnReset" onclick="resetColor()">Reset</button>
+            <button class="btn btn-danger btn-control" id="btnReset" onclick="resetColor()">Reset</button>
         </div>
+        
+        <div id="divSetRoute">
+            <form action="" method="POST" class="form-inline" id="form-route" role="form">
+                <div class="form-group">
+                    <label class="" for="">Set Route: </label>
+                    <input type="text" class="form-control" id="setRouteInput" required="required" pattern="^([0-9]+\s+)+[0-9]+$" title="At least 2 numbers separated by spaces!" placeholder="Ex: 705 657 1260">
+                </div>
+                <button type="submit" class="btn btn-success"> Submit</button>
+            </form>
+        </div>
+        
         <div class="msgOut"></div>
         
     </div>
@@ -55,11 +67,14 @@
 </body>
 <script>
     $("#form-submit").submit(function (e) {
-
-    e.preventDefault();
-    getRoute();
+        e.preventDefault();
+        getRoute();
+    });
     
-
-});
+    $("#form-route").submit(function (e) {
+        e.preventDefault();
+        setRoute();
+    });
 </script>
+
 </html>

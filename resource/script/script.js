@@ -44,7 +44,7 @@
         springLength : 120,
         springCoeff : 0.0008,
         dragCoeff : 0.06,
-        gravity : -0.2
+        gravity : -0.9
      });
 
     // customize node
@@ -60,18 +60,23 @@
                         linkUI.baseColor = "blue" ;
                     if(isFly)
                         linkUI.baseColor = "red";
-                linkUI.attr("stroke", isOn ? "yellow" : linkUI.baseColor);
+                    linkUI.attr("stroke", isOn ? "yellow" : linkUI.baseColor);
                 }
             });
         };
 
     graphics.node(function(node) {
+        if(node.data.trf_level =="kho_tong")
+            var imgFile = 'resource/img/ghtk.png' ;
+        else
+            var imgFile = 'resource/img/node.jpg' ;
+        
         var ui  =  Viva.Graph.svg('g'),
         stationName = Viva.Graph.svg('text').attr('y', '-5px').text(node.id+" "+node.data.name),
         img = Viva.Graph.svg('image')     
             .attr('width', nodeSize)
             .attr('height', nodeSize)
-            .link('resource/img/ghtk.png');
+            .link(imgFile);
         ui.append(stationName) ;
         ui.append(img);
         ui.addEventListener('click', function () {
@@ -176,38 +181,44 @@
         renderer.resume();
     };
 
-    function hightlightRoute(arrayId) {
-        // var arrayId = [1121, 1260, 657, 705 ];
+    var edgeHightlightGlobal = [];
+
+    function hightlightRoute() {
+        // var route = [1121, 1260, 657, 705 ];
         
 
         var edgeHightlight = [];
-        for(i=0; i< arrayId.length -1; i++) {
-            highlightNode(arrayId[i]);
-            edgeHightlight.push([arrayId[i], arrayId[i+1]]);
-            edgeHightlight.push([arrayId[i+1], arrayId[i]]);
+        for(i=0; i< routeGlobal.length -1; i++) {
+            highlightNode(routeGlobal[i], "red");
+            edgeHightlight.push([routeGlobal[i], routeGlobal[i+1]]);
+            edgeHightlight.push([routeGlobal[i+1], routeGlobal[i]]);
         }
-        console.log(edgeHightlight);
+        highlightNode(routeGlobal[routeGlobal.length-1], "red");
+        edgeHightlightGlobal = edgeHightlight;
+        console.log("EDGE GLOBAL: ", edgeHightlightGlobal);
 
         for(i=0; i< edgeHightlight.length; i++) {
-            hightlightLink(edgeHightlight[i]) ;
+            hightlightLink(edgeHightlight[i], "red") ;
         }
     };
 
-    function hightlightLink(edge) {
+    function hightlightLink(edge, color) {
         var link_edge = graph.getLink(edge[0], edge[1]);
-        var linkUI = graphics.getLinkUI(link_edge.id) ;
-        if(linkUI) {
-            linkUI.attr("stroke", "red");
-            linkUI.baseColor = "red";
+        if(link_edge) {
+            var linkUI = graphics.getLinkUI(link_edge.id) ;
+            linkUI.attr("stroke", color);
+            linkUI.baseColor = color;
         }
 
     };
 
-    function highlightNode(nodeId) {
+    function highlightNode(nodeId, color) {
         var ui = graphics.getNodeUI(nodeId);
-        ui.attr('fill', 'red');
+        if(ui)
+            ui.attr('fill', color);
     };
-
+    
+    var routeGlobal = [];
     function getRoute() {
         var route = [];
         var src = $("#fromStation").val();
@@ -227,25 +238,47 @@
         console.log("route:", route)
         if(route.length == 0) {
             $(".msgOut").html("Chưa config tuyến đường này!");
+            resetColor();
         }
         else {
-            var msg = "Tuyến config:" + route.join(" --> ");
+            var msg = "Tuyến config: " + route.join(" --> ");
             
-            $(".msgOut").html("Chưa config tuyến đường này!");
-            hightlightRoute(route);
+            $(".msgOut").html(msg);
+            routeGlobal = route;
+            hightlightRoute();
 
         }
     };
 
     function resetColor() {
-        graphics.node(function(node) {
-            var ui = graphics.getNodeUI(node.id);
-            ui.attr('fill', 'black');
-        });
-        graphics.link(function(link){
-            var linkUI = graphics.getLinkUI(link.id) ;
-            linkUI.attr("stroke", "blue");
-            linkUI.baseColor = "blue";
-        }); 
-
+        for(i=0; i< routeGlobal.length; i++) {
+            highlightNode(routeGlobal[i], "black");
+        }
+        
+        for(i=0; i<edgeHightlightGlobal.length; i++){
+            hightlightLink(edgeHightlightGlobal[i], "blue");
+            
+        }
+        
     };
+
+    function setRoute() {
+        var path_data = $("#setRouteInput").val();
+        console.log(path_data);
+        dataSend = {path: path_data};
+        console.log(dataSend);
+        var msg = "<span style='margin-left: 430px;'>Status set route: ";
+        $.ajax({ 
+            method: "POST",
+            url: "http://192.168.100.115:3001/address/setRoute",
+            async: false,
+            data: dataSend,
+            success: function (data) { 
+                msg += data.status; 
+                msg += "</span>" ;
+            },
+            
+        });
+        $(".msgOut").html(msg);
+
+    }

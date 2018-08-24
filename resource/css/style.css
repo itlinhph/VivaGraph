@@ -23,9 +23,18 @@ html,body,svg {
 }
 
 .controlpanel {
+    margin-left: 40px;
+    margin-top: 20px ;
+    display: inline-block;
+}
+
+#divSetRoute {
     margin-left: 400px;
     margin-top: 20px ;
+    display: inline-block;
+    float: left;
 }
+
 .btn-control {
     
     width: 80px;
@@ -35,4 +44,7 @@ html,body,svg {
     margin-top: 10px;
     margin-left: 40px;
     color: red;
+    position: absolute;
+    z-index: 2;
 }
+
