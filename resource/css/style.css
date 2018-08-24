@@ -44,7 +44,7 @@ html,body,svg {
     margin-top: 10px;
     margin-left: 40px;
     color: red;
-    position: absolute;
-    z-index: 2;
+    /* position: relative; */
+    /* z-index: 2; */
 }
 

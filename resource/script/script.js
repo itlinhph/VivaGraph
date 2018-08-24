@@ -17,8 +17,13 @@
         return dataOut;
     };
     
+    
+  
+
+
     var nodeList = getDataFromAPI(URL_API + "/address/getVertexList");
     var edgeList = getDataFromAPI(URL_API + "/address/getEdgeList");
+
     console.log(nodeList);
     console.log(edgeList);
 
@@ -28,13 +33,14 @@
         if(item.trf_level == "kho_tong")
             // graph.addNode(item[0], item[1]).isPinned = true ;
             graph.addNode(item.id, item);
-        // else
-        //     graph.addNode(item[0], item[1]) ;
+        else
+            graph.addNode(item.id, item) ;
         
     });
     
     edgeList.forEach(function(item){
-        graph.addLink(item.fr_stid, item.to_stid, item.trf_type) ;
+        if(item.trf_type !="fly")
+            graph.addLink(item.fr_stid, item.to_stid, item.trf_type) ;
     });
 
     
@@ -72,7 +78,7 @@
             var imgFile = 'resource/img/node.jpg' ;
         
         var ui  =  Viva.Graph.svg('g'),
-        stationName = Viva.Graph.svg('text').attr('y', '-5px').text(node.id+" "+node.data.name),
+        stationName = Viva.Graph.svg('text').attr('y', '-5px').text("["+node.id+"] "+node.data.name),
         img = Viva.Graph.svg('image')     
             .attr('width', nodeSize)
             .attr('height', nodeSize)
@@ -236,14 +242,22 @@
             
         });
         console.log("route:", route)
+        resetColor();
         if(route.length == 0) {
             $(".msgOut").html("Chưa config tuyến đường này!");
-            resetColor();
+            $("#setRouteInput").val(src+ " xxx " + dst) ;
+            highlightNode(src, "red");
+            highlightNode(dst, "red");
+            routeGlobal.push(src);
+            routeGlobal.push(dst);
+            
         }
         else {
-            var msg = "Tuyến config: " + route.join(" --> ");
+            var msg = "Tuyến config: " + route.join(" ");
             
             $(".msgOut").html(msg);
+            $("#setRouteInput").val(route.join(" ")) ;
+
             routeGlobal = route;
             hightlightRoute();
 
