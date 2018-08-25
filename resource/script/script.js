@@ -18,11 +18,17 @@
     };
     
     
-  
+    
+    try {
+        var nodeList = nodeListText;
+        var edgeList = edgeListText;
+    }
+    catch(err) {
+        var nodeList = getDataFromAPI(URL_API + "/address/getVertexList");
+        var edgeList = getDataFromAPI(URL_API + "/address/getEdgeList");
+    }
+    
 
-
-    var nodeList = getDataFromAPI(URL_API + "/address/getVertexList");
-    var edgeList = getDataFromAPI(URL_API + "/address/getEdgeList");
 
     console.log(nodeList);
     console.log(edgeList);
@@ -273,6 +279,11 @@
             hightlightLink(edgeHightlightGlobal[i], "blue");
             
         }
+
+        $(".msgOut").html("");
+        $("#fromStation").val("");
+        $("#toStation").val("");
+        $("#setRouteInput").val("") ;
         
     };
 
@@ -294,5 +305,20 @@
             
         });
         $(".msgOut").html(msg);
+        
+
+    }
+
+
+    function hideMap() {
+        $("#frame").addClass("hide");
+        $("#btnHide").addClass("hide");
+        $("#btnShow").removeClass("hide");
+
+    }
+    function showMap() {
+        $("#frame").removeClass("hide");
+        $("#btnShow").addClass("hide");
+        $("#btnHide").removeClass("hide");
 
     }
