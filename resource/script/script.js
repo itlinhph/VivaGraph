@@ -35,11 +35,12 @@
 
     // creat graph
     var graph = Viva.Graph.graph();
+
     nodeList.forEach(function(item) {
-        if(item.trf_level == "kho_tong")
-            // graph.addNode(item[0], item[1]).isPinned = true ;
-            graph.addNode(item.id, item);
-        else
+        // if(item.trf_level == "kho_tong")
+        //     // graph.addNode(item[0], item[1]).isPinned = true ;
+        //     isPinnedNode[item.id] = graph.addNode(item.id, item);
+        // else
             graph.addNode(item.id, item) ;
         
     });
@@ -59,6 +60,8 @@
         gravity : -0.9
      });
 
+    console.log(layout);
+
     // customize node
     var graphics = Viva.Graph.View.svgGraphics(),
         nodeSize = 20,
@@ -76,12 +79,50 @@
                 }
             });
         };
-
+    
+    var baseX = -640;
+    var baseY = -555;
+    var countID = 0;
     graphics.node(function(node) {
-        if(node.data.trf_level =="kho_tong")
+        // console.log(node.links);
+        if(node.links ==null) {
+            layout.pinNode(node, true);
+            if(countID%2 ==0) {
+                baseX = -840;
+                baseY += 60;
+            }
+            else
+                baseX = -640;
+
+            layout.setNodePosition(node.id, baseX, baseY);
+            countID++;
+            
+        
+        }
+
+        if(typeof(node.data) == "undefined") {
+            console.log("Kho loi: ", node.id);
+            node.data = {
+                "id": node.id,
+                "name": "Kho Lỗi",
+                "trf_level": "kho loi",
+                "lat": "11.9963972",
+                "lng": "107.5144652",
+                "type": "station"
+            };
+        }
+        else if(node.data.trf_level =="kho_tong") {
+
+            // layout.setNodePosition(node.id, parseFloat(node.data.lat), parseFloat(node.data.lng) );
+        }
+
+        var trf_levell = node.data.trf_level;
+        if(trf_levell =="kho_tong")
             var imgFile = 'resource/img/ghtk.png' ;
-        else
+        else if(trf_levell =="buu_cuc")
             var imgFile = 'resource/img/node.jpg' ;
+        else
+            var imgFile = 'resource/img/error.jpg' ;
         
         var ui  =  Viva.Graph.svg('g'),
         stationName = Viva.Graph.svg('text').attr('y', '-5px').text("["+node.id+"] "+node.data.name),
@@ -94,6 +135,7 @@
         ui.addEventListener('click', function () {
             // toggle pinned mode
             layout.pinNode(node, !layout.isNodePinned(node));
+            
         });
         
         $(ui).hover(function(){
@@ -103,10 +145,12 @@
         });
         return ui;
     }).placeNode(function(nodeUI, pos) {
+        // console.log(pos);
         nodeUI.attr('transform',
             'translate(' +
             (pos.x - nodeSize / 2) + ',' + (pos.y - nodeSize / 2) +
             ')');
+        
     });
     
     // creat Marker direct link
