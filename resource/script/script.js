@@ -1,6 +1,8 @@
 
      
     var URL_API = "http://192.168.100.115:3001" ;
+    
+    var shiftPress = false;
 
     function getDataFromAPI(url1) {
         var dataOut ;
@@ -54,17 +56,16 @@
 
     // layout
     var layout = Viva.Graph.Layout.forceDirected(graph, {
-        springLength : 120,
+        springLength : 220,
         springCoeff : 0.0008,
         dragCoeff : 0.06,
         gravity : -0.9
      });
 
-    console.log(layout);
 
     // customize node
     var graphics = Viva.Graph.View.svgGraphics(),
-        nodeSize = 20,
+        nodeSize = 30,
         hightlightRelateNodes = function(nodeId, isOn) {
             graph.forEachLinkedNode(nodeId, function(node, link) {
                 var isFly = (link.data == "fly");
@@ -96,8 +97,14 @@
 
             layout.setNodePosition(node.id, baseX, baseY);
             countID++;
+        }
+        else if(typeof(node.data)!="undefined" && node.data.lat !="" && node.data.lng !="" && node.data.trf_level =="kho_tong") {
             
-        
+            var x =  parseFloat(node.data.lng)*100 - 10700;
+            var y = -parseFloat(node.data.lat)*100 + 1500 ;
+            // console.log(node.data, x, y);
+            layout.pinNode(node, true);
+            layout.setNodePosition(node.id, x, y);
         }
 
         if(typeof(node.data) == "undefined") {
@@ -111,10 +118,7 @@
                 "type": "station"
             };
         }
-        else if(node.data.trf_level =="kho_tong") {
-
-            // layout.setNodePosition(node.id, parseFloat(node.data.lat), parseFloat(node.data.lng) );
-        }
+        
 
         var trf_levell = node.data.trf_level;
         if(trf_levell =="kho_tong")
@@ -133,8 +137,8 @@
         ui.append(stationName) ;
         ui.append(img);
         ui.addEventListener('click', function () {
-            // toggle pinned mode
-            layout.pinNode(node, !layout.isNodePinned(node));
+            if(shiftPress)
+                layout.pinNode(node, !layout.isNodePinned(node));
             
         });
         
@@ -223,6 +227,7 @@
             
     function renderGraph() {
         renderer.run();
+        hideBC();
     };
 
     function pauseRender() {
@@ -262,6 +267,7 @@
         var link_edge = graph.getLink(edge[0], edge[1]);
         if(link_edge) {
             var linkUI = graphics.getLinkUI(link_edge.id) ;
+            $(linkUI).show();
             linkUI.attr("stroke", color);
             linkUI.baseColor = color;
         }
@@ -270,8 +276,10 @@
 
     function highlightNode(nodeId, color) {
         var ui = graphics.getNodeUI(nodeId);
-        if(ui)
+        if(ui) {
+            $(ui).show();
             ui.attr('fill', color);
+        }
     };
     
     var routeGlobal = [];
@@ -328,6 +336,8 @@
         $("#fromStation").val("");
         $("#toStation").val("");
         $("#setRouteInput").val("") ;
+        if(isHideBC)
+            hideBC();
         
     };
 
@@ -356,13 +366,62 @@
 
     function hideMap() {
         $("#frame").addClass("hide");
-        $("#btnHide").addClass("hide");
-        $("#btnShow").removeClass("hide");
+        $("#btnHideMap").addClass("hide");
+        $("#btnShowMap").removeClass("hide");
 
     }
     function showMap() {
         $("#frame").removeClass("hide");
-        $("#btnShow").addClass("hide");
-        $("#btnHide").removeClass("hide");
+        $("#btnShowMap").addClass("hide");
+        $("#btnHideMap").removeClass("hide");
 
     }
+    
+    var isHideBC = true;
+
+    function hideBC() {
+        $("#btnHideBC").addClass("hide");
+        $("#btnShowBC").removeClass("hide");
+
+        graph.forEachNode(function(node){
+            if(node.data.trf_level =="buu_cuc") {
+                var nodeUI = graphics.getNodeUI(node.id);
+                $(nodeUI).hide();
+                graph.forEachLinkedNode(node.id, function(node, link) {
+                    var linkUI = graphics.getLinkUI(link.id) ;
+                    $(linkUI).hide();
+                });
+
+            }
+        });
+        isHideBC = true;
+
+    }
+    function showBC() {
+        $("#btnShowBC").addClass("hide");
+        $("#btnHideBC").removeClass("hide");
+        graph.forEachNode(function(node){
+            if(node.data.trf_level =="buu_cuc") {
+                var nodeUI = graphics.getNodeUI(node.id);
+                $(nodeUI).show();
+                graph.forEachLinkedNode(node.id, function(node, link) {
+                    var linkUI = graphics.getLinkUI(link.id) ;
+                    $(linkUI).show();
+                });
+
+            }
+        });
+        isHideBC = false;
+
+    }
+
+    document.addEventListener('keydown', function(e) {
+        if (e.which === 16) { // shift key
+          shiftPress = true;
+        }
+    });
+    document.addEventListener('keyup', function(e) {
+        if (e.which === 16) { // shift key
+          shiftPress = false;
+        }
+    });
