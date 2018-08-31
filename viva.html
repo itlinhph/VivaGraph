@@ -24,11 +24,11 @@
         
             <div class="form-group">
                 <label class="" for="">From</label>
-                <input type="text" class="form-control" id="fromStation" placeholder="Ex: 229" required="required" pattern="^[0-9]+$" title="Number pờ lít!">
+                <input type="text" class="form-control" id="fromStation" placeholder="Ex: 617" required="required" pattern="^[0-9]+$" title="Number pờ lít!">
             </div>
             <div class="form-group">
                 <label class="" for="">To</label>
-                <input type="text" class="form-control " id="toStation" placeholder="Ex: 705" required="required" pattern="^[0-9]+$" title="Number pờ lít!" >
+                <input type="text" class="form-control " id="toStation" placeholder="Ex: 1264" required="required" pattern="^[0-9]+$" title="Number pờ lít!" >
             </div>
         
             <button type="submit" class="btn btn-success"><span class="glyphicon glyphicon-search" aria-hidden="true"></span> Find</button>
@@ -38,8 +38,10 @@
             <button class="btn btn-warning btn-control" id="btnPause" onclick="pauseRender()">Pause</button>
             <button class="btn btn-primary hide btn-control" id="btnResume" onclick="resumeRender()">Resume</button>
             <button class="btn btn-danger btn-control" id="btnReset" onclick="resetColor()">Reset</button>
-            <button class="btn btn-default btn-control" id="btnHide" onclick="hideMap()">Hide Map</button>
-            <button class="btn btn-default btn-control hide" id="btnShow" onclick="showMap()">Show Map</button>
+            <button class="btn btn-default btn-control" id="btnHideMap" onclick="hideMap()">Hide Map</button>
+            <button class="btn btn-default btn-control hide" id="btnShowMap" onclick="showMap()">Show Map</button>
+            <button class="btn btn-default btn-control" id="btnHideBC" onclick="hideBC()">Hide BC</button>
+            <button class="btn btn-default btn-control hide" id="btnShowBC" onclick="showBC()">Show BC</button>
         </div>
         
         <div id="divSetRoute">
@@ -75,6 +77,7 @@
         e.preventDefault();
         setRoute();
     });
+    // hideBC();
 </script>
 
 </html>
